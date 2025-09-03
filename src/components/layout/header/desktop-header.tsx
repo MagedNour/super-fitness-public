@@ -7,6 +7,7 @@ import LangToggle from "@/components/features/toggle-lang/lang-toggle";
 import ArrowIconRight from "@/components/common/right-arrow-icon/ArrowIconRight";
 import i18n from "@/lib/utils/i18n";
 import { useTranslation } from "react-i18next";
+import logo from "@/assets/images/logo.svg";
 
 export default function DesktopHeader() {
   // Translations
@@ -37,11 +38,7 @@ export default function DesktopHeader() {
     <header className="hidden lg:flex z-10 items-center justify-between mx-20 top-10 left-0 right-0 absolute font-baloo">
       {/* Logo */}
       <Link to="/">
-        <img
-          src="/src/assets/images/logo.svg"
-          className="w-[87px] h-14 object-contain"
-          alt="logo"
-        />
+        <img src={logo} className="w-[87px] h-14 object-contain" alt="logo" />
       </Link>
 
       {/* Navigation */}

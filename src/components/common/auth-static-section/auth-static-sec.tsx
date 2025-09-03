@@ -1,3 +1,7 @@
+import authImage from "@/assets/images/auth/auth.png";
+import logoFull from "@/assets/images/logo-full.png";
+
+
 export default function AuthStaticSection() {
   const lang = localStorage.getItem("lang");
   return (
@@ -9,13 +13,13 @@ export default function AuthStaticSection() {
       >
         {/* Logo photo */}
         <div className=" w-28 md:w-44  ">
-          <img className="w-full h-full" src="\src\assets\images\logo-full.png" alt="logo photo" />
+          <img className="w-full h-full" src= {logoFull} alt="logo photo" />
         </div>
         {/* Main photo */}
         <div className="w-72 sm:w-96 xl:w-[628px] ">
           <img
             className="w-full h-full"
-            src="\src\assets\images\auth\auth.png"
+            src= {authImage}
             alt="Welcoming photo"
           />
         </div>

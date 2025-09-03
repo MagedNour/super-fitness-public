@@ -30,67 +30,68 @@ export default function ChatAi() {
     },
   ]);
 
-  const onSubmit = async (e: FormDataEvent) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      if (!e.target[0].value) return;
+
+      // Safely get form data
+      const formData = new FormData(e.currentTarget);
+      const userMessage = formData.get("message") as string;
+
+      if (!userMessage) return;
+
+      // Add user message to state
       setMessage([
         ...message,
         {
-          content: {
-            parts: [
-              {
-                text: e.target[0].value,
-              },
-            ],
-            role: "user",
-          },
+          content: { parts: [{ text: userMessage }], role: "user" },
         },
       ]);
 
-      // Call Ai
-      const { data } = await axios({
-        method: "post",
-        url: import.meta.env.VITE_URL_GEMNAI,
-        headers: {
-          "Content-Type": "application/json",
-          "X-goog-api-key": import.meta.env.VITE_API_KEY,
-        },
-        data: {
-          contents: [
-            {
-              parts: [
-                {
-                  text:
-                    "you're fitness trainer and your answer maximum in just two rows" +
-                    e.target[0].value,
-                },
-              ],
-            },
-          ],
-        },
-      }).catch((err) => {
+      // Call AI
+      let data;
+      try {
+        const response = await axios({
+          method: "post",
+          url: import.meta.env.VITE_URL_GEMNAI,
+          headers: {
+            "Content-Type": "application/json",
+            "X-goog-api-key": import.meta.env.VITE_API_KEY,
+          },
+          data: {
+            contents: [
+              {
+                parts: [
+                  {
+                    text:
+                      "you're fitness trainer and your answer maximum in just two rows " +
+                      userMessage,
+                  },
+                ],
+              },
+            ],
+          },
+        });
+
+        data = response.data;
+      } catch (err) {
         console.log(err);
-      });
+        return; // stop execution if error
+      }
+
       const { candidates } = data;
 
       setMessage((prev) => [
         ...prev,
         {
-          content: {
-            parts: [
-              {
-                text: candidates[0].content.parts[0].text,
-              },
-            ],
-            role: "model",
-          },
+          content: { parts: [{ text: candidates[0].content.parts[0].text }], role: "model" },
         },
       ]);
 
-      e.target[0].value = "";
+      // Reset input field
+      e.currentTarget.reset();
     } catch (error) {
-      toast.error(t("something-went-wrong"));
+      toast.error(t("something-went-wrong") + error);
     }
   };
 

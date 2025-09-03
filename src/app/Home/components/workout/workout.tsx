@@ -2,15 +2,15 @@ import HeadingTitle from "@/components/common/headingTitle";
 import bgworkout from "../../../../assets/images/workout/workoutbg.jpg";
 import workout from "../../../../assets/images/about-us/workout.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import FullBody from "./_components/full-body";
+import FullBody from "./components/fullBody";
 import { useTranslation } from "react-i18next";
 import { Dumbbell } from "lucide-react";
-import Chest from "./_components/chest";
-import Arm from "./_components/arm";
-import Shoulders from "./_components/shoulders";
-import Back from "./_components/back";
-import Legs from "./_components/legs";
-import Stomach from "./_components/stomach";
+import Chest from "./components/chest";
+import Arm from "./components/arm";
+import Shoulders from "./components/shoulders";
+import Back from "./components/back";
+import Legs from "./components/legs";
+import Stomach from "./components/stomach";
 
 export default function WorkoutSection() {
   // Initialize translation function

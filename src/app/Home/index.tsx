@@ -1,5 +1,5 @@
 import bgHero from "../../assets/images/hero-bg.png";
-import AboutUs from "./components/about-us/about-us";
+import AboutUs from "./components/about-us/aboutUs";
 import ChatAi from "./components/ChatAi";
 import HeroSection from "./components/hero-section/hero";
 import MealsSection from "./components/meals-section/meals";

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -52,3 +53,7 @@ export default tseslint.config({
   },
 })
 ```
+=======
+# super-fitness-public
+SuperFitness is a web app for tracking workouts, managing routines, and setting fitness goals. It offers an easy-to-use interface and interactive dashboards to support users on their health journey.
+>>>>>>> f7cb6aa7a19655196d8a04ac4dca61487ed50cb0
